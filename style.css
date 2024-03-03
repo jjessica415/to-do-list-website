@@ -1,12 +1,16 @@
-body {
-    margin: 0px;
-    padding: 0px;
-  }
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
   
 .todo-app{
-  margin: 10px auto 20px;
-  padding: 40px 30px 70px;
-  border-radius: 10px;  
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;  
 }
 
 .todo-app h2{
@@ -28,12 +32,14 @@ body {
 
 .row{
   display: flex;
-  /* align-items: center; */
-  /* justify-content: space-between; */
+  align-items: center;
+  justify-content: space-between;
   background: #edeef0;
   border-radius: 30px;
-  /* padding-left: 20px; */
+  padding-left: 20px;
   margin-bottom: 25px;
+  font-family: 'Poppins', sans-serif;
+
 }
 
 input{
@@ -59,29 +65,80 @@ button:hover{
   background: #E2A49C;
 }
 
-  .main {
-      width: 100%;
-      min-height: 100vh;
-      background-color: #F3DFDF;
-      padding: 150px 0;   
-    }
+.main {
+    /* width: 100%; */
+    min-height: 100vh;
+    background-color: #F3DFDF;
+    padding: 150px 0;   
+}
   
 
 img {
     max-width: 100%;
     height: auto; }
 
-    .container {
-        width: 800px;
-        background: white;
-        /* margin: 0 auto; */
-        box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-        -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-        -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-        -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-        -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-        border-radius: 45px;
-        -moz-border-radius: 45px;
-        -webkit-border-radius: 45px;
-        -o-border-radius: 45px;
-        -ms-border-radius: 20px; }
+.container {
+    width: 60%;
+    min-height: 50vh;
+    background: white;
+    margin: 0 auto; 
+    box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05); 
+    border-radius: 45px;
+    -moz-border-radius: 45px;
+    -webkit-border-radius: 45px;
+    -o-border-radius: 45px;
+    -ms-border-radius: 20px; 
+} 
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 80px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+ul li::before{
+    content: '';
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-image: url(images/radio.png); 
+    background-size: cover;
+    background-position: center;
+    top: 9px;
+    left: 5px;
+}
+
+ul li.checked{
+    color: #b6977d;
+    text-decoration: line-through;
+}
+
+ul li.checked::before{
+    /* find another image for checked icon button */
+    background-image: url(images/checked.png); 
+}
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 0px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+ul li span:hover{
+    background: #edeef0;
+}
