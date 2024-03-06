@@ -7,7 +7,7 @@
   
 .todo-app{
     width: 100%;
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 10px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;  
@@ -20,7 +20,7 @@
   margin-bottom: 20px;
   line-height: 1.66;
   font-weight: bold;
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   font-size: 36px;
 }
 
@@ -30,36 +30,63 @@
     height: 45px;
 }
 
-.row{
+.input-container form{
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #edeef0;
-  border-radius: 30px;
+  border-radius: 100px;
   padding-left: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-family: 'Poppins', sans-serif;
+  /* min-height: 1vh; */
+  width: 100%;
 
 }
 
+
+.input-container img{
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+}
+
 input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 20px; 
+}
+
+.filters {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+/* #myInput{
   flex: 1;
   border: none;
   outline: none;
   background: transparent;
-  padding: 10px;
-}
+  padding: 20px;
+} */
 
 button{
-  border: none;
-  outline: none;
-  padding: 16px 50px;
-  background: #F5C7C5;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 40px;
-}
+    border: none;
+    outline: none;
+    width: 45px;
+    height: 45px;
+    background: #F5C7C5;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+    margin-bottom: 25px;
+    margin-left: 250px;
+  }
 
 button:hover{
   background: #E2A49C;
@@ -69,7 +96,7 @@ button:hover{
     /* width: 100%; */
     min-height: 100vh;
     background-color: #F3DFDF;
-    padding: 150px 0;   
+    padding: 80px 0;   
 }
   
 
@@ -92,7 +119,8 @@ img {
     -webkit-border-radius: 45px;
     -o-border-radius: 45px;
     -ms-border-radius: 20px; 
-} 
+}   
+
 
 ul li{
     list-style: none;
@@ -113,7 +141,7 @@ ul li::before{
     background-size: cover;
     background-position: center;
     top: 9px;
-    left: 5px;
+    left: 0px;
 }
 
 ul li.checked{
@@ -122,15 +150,15 @@ ul li.checked{
 }
 
 ul li.checked::before{
-    /* find another image for checked icon button */
-    background-image: url(images/checked.png); 
+    background-image: url(images/radio-filled.png); 
 }
 
+/* span is the x mark to remove the task */
 ul li span{
     position: absolute;
-    right: 0;
+    right: 20px;
     top: 5px;
-    width: 0px;
+    width: 40px;
     height: 40px;
     font-size: 22px;
     color: #555;
@@ -139,6 +167,8 @@ ul li span{
     border-radius: 50%;
 }
 
+/* gives user feedback when hovering over the remove (x) symbol */
 ul li span:hover{
     background: #edeef0;
 }
+

@@ -21,22 +21,40 @@
         <div class="container">
             <div class="todo-app">
                 <h2>To-Do List <img src="images/work-order.png" alt="to-do list icon" id="icon"></h2>
-                <div class="row">
-                    <input type="text" id="myInput" autocomplete="off" placeholder="Add task">
-                    <button onclick="addTask()" id="addBtn">Add</button>
-                </div>
-                <ul id="list-container">
-                    <!-- <li class="checked">Task 1</li>
-                            <li>Task 2</li>
-                            <li>Task 3</li>
-                            <li>Task 4</li>
-                            <li>Task 5</li> -->
-                </ul>
+                <div class="input-container">
+                    <form action="" id="todo-form">
+                        <input type="text" id="myInput" autocomplete="off" placeholder="Add a task" autofocus>
+                        <input type="date" id="due-date">
+                        <button onclick="addTask()">
+                            <img src="images/addv1.png" alt="add-sign">
+                        </button>
+                    </form>
+                    <div class="filters">
+                        <div class="filter" data-filter="completed">Complete</div>
+                        <div class="filter" data-filter="pending">Incomplete</div>
+                        <div class="delete-all">Delete All</div>
+                    </div>                     
 
+                    <ul id="list-container">
+                        <!-- <li>Hit the gym</li>
+                        <li class="checked">Pay bills</li>
+                        <li>Meet George</li>
+                        <li>Buy eggs</li>
+                        <li>Read a book</li>
+                        <li>Organize office</li> -->
+                    </ul>
+
+                </div>
+                <!-- <div>
+                    <input type="date">
+                </div> -->
+
+                <!-- <ul id="list-container">
+                </ul> -->
             </div>
         </div>
     </div>
     <script src="script.js"></script>
+    <audio id="bell" src="https://freesound.org/data/previews/320/320181_274531-lq.mp3"></audio>
 </body>
-
 </html>
