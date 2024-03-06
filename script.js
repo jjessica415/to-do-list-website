@@ -12,8 +12,8 @@ function addTask() {
         li.innerHTML = myInput.value;
         listContainer.appendChild(li);
 
-        let date = document.createElement();
-        date.innerHTML = 
+        // let date = document.createElement();
+        // date.innerHTML = 
 
 
         // add the cross icon to each of the listed tasks
