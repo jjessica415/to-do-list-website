@@ -1,111 +1,203 @@
-const myInput = document.getElementById("myInput");
-const listContainer = document.getElementById("list-container");
+const input = document.getElementById('myInput');
+const taskList = document.getElementById('todo-list');
+const completedList = document.getElementById('completed-list');
 const dueDate = document.getElementById("due-date");
+// const todosHtml = document.querySelector(".todos");
+// let todosJson = JSON.parse(localStorage.getItem("todos"))
+// const filters = document.querySelectorAll(".filter");
+
+// let filter = '';
+
+// function addTask() {
+//     if(myInput.value === ''){} 
+//     else {
+//         // upon clicking the add button after you write out your tag, it is listed under the input/add button  
+//         let li = document.createElement("li");
+//         li.innerHTML = `${myInput.value} <p class="due-date">Due Date: ${dueDate.value}</p>`;
+        
+//         // do {
+//         //     li.innerHTML = `<p class="due-date">Due Date: ${dueDate.value}</p>`;
+//         // } while (dueDate.value != '');
+//         listContainer.appendChild(li);
+
+//         // let task = {
+//         //     description: inputBox.value,
+//         //     dueDate: dueDate.value,
+//         //   };
+//         //   compltedTask.push(task);
+//         // //   let li = document.createElement("li");
+//         //   li.innerHTML = `${inputBox.value} <p class="due-date">Due: ${dueDate.value}</p>`;
+//         // //   listContainer.appendChild(li);
+
+//         // add the cross icon to each of the listed tasks
+//         let span = document.createElement("span");
+//         span.innerHTML = "\u00d7";
+//         li.appendChild(span);
+//     }
+//     myInput.value = "";
+//     dueDate.value = "";
+//     saveData();
+// }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // loadTasks();
+    loadCompletedTasks();
+  });
 
 function addTask() {
-    if(myInput.value === ''){
-        alert("You must write something!");
-    }
+    const taskText = input.value.trim();
+
+    // if (taskText !== '') {
+
+    if(input.value === ''){} 
     else {
-        // upon clicking the add button after you write out your tag, it is listed under the input/add button  
-        let li = document.createElement("li");
-        li.innerHTML = myInput.value;
-        listContainer.appendChild(li);
+      const newTask = document.createElement('li');
+      newTask.innerHTML = `
+        ${taskText} <p class="due-date">Due: ${dueDate.value}</p>
+        <select onchange="setPriority(this)">
+          <option value="">Select Priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>`;
+      taskList.appendChild(newTask);
+    //   setPriority(newTask.querySelector('select')); // Set initial priority
 
-        // let date = document.createElement();
-        // date.innerHTML = 
 
-
-        // add the cross icon to each of the listed tasks
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
+      // add the cross icon to each of the listed tasks
+      let span = document.createElement("span");
+      span.innerHTML = "\u00d7";
+      newTask.appendChild(span);
     }
-    myInput.value = "";
-    saveData();
-}
+
+      input.value = '';
+      dueDate.value = '';
+      saveTasks();
+    
+  }
 
 
-listContainer.addEventListener("click", function(e){
+taskList.addEventListener("click", function(e){
     // when clicking on a specific task it checks and unchecks the task, strike out and unstrikes the task
     if(e.target.tagName === "LI"){
         while (e.target.classList.toggle("checked")){
-            saveData();
+            moveTaskToCompleted(e.target);
+            saveTasks();
             play();
         };
+        saveTasks();
     }
 
     // if the cross/x is clicked on then it removes the task listed
     else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
-        saveData();
+        saveTasks();
     }
 }, false);
 
-// document.addEventListener('click', function (event) {
-// 	fadeOutAndRemove(event.target);
-// });
 
-// function fadeOutAndRemove(element) {
-// 	element.classList.add('fade-out');
-//     element.addEventListener('transitionend', function () {
-//   	element.parentNode.removeChild(element);
-//   });
-// }
+function setPriority(select) {
+    const taskItem = select.parentNode;
+    const priority = select.value;
+    taskItem.className = `priority-${priority}`;
+    saveTasks();
+  }
 
 
-// listContainer.addEventListener("click", ){
-//     if (e.target.tagName === "LI"){
-//         while (e.target.classList)
-//     }
-// }
-
-function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
+function saveTasks() {
+    localStorage.setItem('tasks', taskList.innerHTML);
+    localStorage.setItem('completedTasks', completedList.innerHTML);
 }
 
+// // allows the information/data to be saved, even when you exit/reopen, refresh, and backout of the page 
+// function saveData(){
+//     localStorage.setItem("data", taskList.innerHTML);
+// }
+
+function toggleCompletion(checkbox) {
+    const taskText = checkbox.nextElementSibling;
+    const taskItem = checkbox.parentNode;
+
+    if (checkbox.checked) {
+      taskText.classList.add('completed');
+      moveTaskToCompleted(taskItem);
+    } else {
+      taskText.classList.remove('completed');
+      moveTaskToTodoList(taskItem);
+    }
+    play();
+    saveTasks();
+  }
+
+  function loadCompletedTasks() {
+    const completedList = document.getElementById('completed-list');
+    const savedCompletedTasks = localStorage.getItem('completedTasks');
+    if (savedCompletedTasks) {
+      completedList.innerHTML = savedCompletedTasks;
+    }
+  }
+
+  function moveTaskToCompleted(taskItem) {
+    const completedList = document.getElementById('completed-list');
+    completedList.appendChild(taskItem);
+    saveTasks();
+  }
+
+  function moveTaskToTodoList(taskItem) {
+    const todoList = document.getElementById('todo-list');
+    todoList.appendChild(taskItem);
+    saveTasks();
+  }
+
+  function checkEnterKey(event) {
+    if (event.key === 'Enter') {
+      addTask();
+    }
+  }
+
+  function showTab(tabName) {
+    const todoTab = document.getElementById('todo-tasks');
+    const completedTab = document.getElementById('completed-tasks');
+
+    if (tabName === 'todo') {
+      todoTab.style.display = 'block';
+      completedTab.style.display = 'none';
+    } else if (tabName === 'completed') {
+      todoTab.style.display = 'none';
+      completedTab.style.display = 'block';
+    }
+  }
+
+
 function displayTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
+    taskList.innerHTML = localStorage.getItem("tasks");
 }
 
 function play(e) {
-    var audio = document.getElementById("bell");
+    var audio = document.getElementById("audio");
     audio.currentTime = 0;
     audio.play();
 
 // double check the code below with toggleBtnAnimation, make sure it makes sense with my code
     const btns = document.querySelectorAll('li');
     btns.forEach(btn => btn.addEventListener('click', toggleBtnAnimation));
+    saveTasks();
 
 }
 
-// // Create a new list item when clicking on the "Add" button
-// function newElement() {
-//     var li = document.createElement("li");
-//     var inputValue = document.getElementById("myInput").value;
-//     var t = document.createTextNode(inputValue);
-//     li.appendChild(t);
-//     if (inputValue === '') {
-//       alert("You must write something!");
-//     } else {
-//       document.getElementById("list-container").appendChild(li);
-//     }
-//     document.getElementById("myInput").value = "";
-  
-//     var span = document.createElement("SPAN");
-//     var txt = document.createTextNode("\u00D7");
-//     span.className = "close";
-//     span.appendChild(txt);
-//     li.appendChild(span);
-  
-//     for (i = 0; i < close.length; i++) {
-//       close[i].onclick = function() {
-//         var div = this.parentElement;
-//         div.style.display = "none";
+// filters.forEach(function (el) {
+//     el.addEventListener("click", (e) => {
+//       if (el.classList.contains('active')) {
+//         el.classList.remove('active');
+//         filter = '';
+//       } else {
+//         filters.forEach(tag => tag.classList.remove('active'));
+//         el.classList.add('active');
+//         filter = e.target.dataset.filter;
 //       }
-//     }
-//     saveData();
-//   }
+//       showTodos();
+//     });
+//   });
 
 
 displayTask();

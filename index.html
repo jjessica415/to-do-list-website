@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-    <title>To-Do List Website</title>
+    <title>To-Do List</title>
 </head>
 
 <body>
@@ -23,38 +23,42 @@
                 <h2>To-Do List <img src="images/work-order.png" alt="to-do list icon" id="icon"></h2>
                 <div class="input-container">
                     <form action="" id="todo-form">
-                        <input type="text" id="myInput" autocomplete="off" placeholder="Add a task" autofocus>
+                        <!-- can add onkeyup="checkEnterKey(event)" inside the input text part if you want to be able to just hit 
+                            enter for newTask to be registered without the form tag -->
+                        <input type="text" id="myInput" autocomplete="off" placeholder="Add a task" autofocus required>
                         <input type="date" id="due-date">
+
                         <button onclick="addTask()">
                             <img src="images/addv1.png" alt="add-sign">
                         </button>
                     </form>
-                    <div class="filters">
-                        <div class="filter" data-filter="completed">Complete</div>
-                        <div class="filter" data-filter="pending">Incomplete</div>
-                        <div class="delete-all">Delete All</div>
-                    </div>                     
+                    <!-- <div class="filters" id="completed-tasks">
+                        <div class="filter" data-filter="completed">Completed</div>
+                        <ul id="completed-list"></ul>
+                    </div>     -->
+                    
+                    <div id="tabs">
+                        <button class="tab" onclick="showTab('todo')">To-Do</button>
+                        <button class="tab" onclick="showTab('completed')">Completed</button>
+                      </div>
 
-                    <ul id="list-container">
-                        <!-- <li>Hit the gym</li>
-                        <li class="checked">Pay bills</li>
-                        <li>Meet George</li>
-                        <li>Buy eggs</li>
-                        <li>Read a book</li>
-                        <li>Organize office</li> -->
-                    </ul>
+                      <div id="todo-tasks">
+                        <ul id="todo-list"></ul>
+                      </div>
+                    
+                      <div id="completed-tasks">
+                        <ul id="completed-list"></ul>
+                      </div>
+                    <!-- <ul id="list-container">
+                    </ul> -->
 
                 </div>
-                <!-- <div>
-                    <input type="date">
-                </div> -->
-
-                <!-- <ul id="list-container">
-                </ul> -->
             </div>
         </div>
     </div>
     <script src="script.js"></script>
-    <audio id="bell" src="https://freesound.org/data/previews/320/320181_274531-lq.mp3"></audio>
+    <audio id="audio" src="audio/Mouse Click Sound Effect.mp3"></audio>
+
+    <!-- <audio id="bell" src="https://freesound.org/data/previews/320/320181_274531-lq.mp3"></audio> -->
 </body>
 </html>

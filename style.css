@@ -3,11 +3,20 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    
 }
   
+
+.main {
+    /* width: 100%; */
+    min-height: 100vh;
+    background-color: #F3DFDF;
+    padding: 80px 0;   
+}
+
 .todo-app{
     width: 100%;
-    /* max-width: 600px; */
+    max-width: 800px;
     margin: 10px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;  
@@ -16,6 +25,7 @@
 .todo-app h2{
   color: #988AE1;
   display: flex;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   line-height: 1.66;
@@ -35,13 +45,9 @@
   align-items: center;
   justify-content: space-between;
   background: #edeef0;
-  border-radius: 100px;
+  border-radius: 30px;
   padding-left: 20px;
-  margin-bottom: 20px;
-  font-family: 'Poppins', sans-serif;
-  /* min-height: 1vh; */
-  width: 100%;
-
+  margin-bottom: 25px;
 }
 
 
@@ -52,57 +58,76 @@
 }
 
 input{
+    position: relative;
+    /* justify-content: space-evenly; */
+    /* flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 20px;  */
+}
+
+#myInput{
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
-    padding: 20px; 
-}
-
-.filters {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
+    /* padding: 2px; */
   }
 
-/* #myInput{
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 20px;
-} */
-
-button{
+#due-date{
+    /* font-size: 12px; */
+    /* width: 20px; */
+    background: transparent;
+    display: block;
     border: none;
     outline: none;
-    width: 45px;
-    height: 45px;
+    margin-right: 200px;
+}
+
+
+#todo-form button{
+    border: none;
+    outline: none;
+    display: flex;
+    padding: 20px 50px;
     background: #F5C7C5;
     color: white;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 40px;
-    margin-bottom: 25px;
-    margin-left: 250px;
+    border-radius: 30px;
   }
 
 button:hover{
   background: #E2A49C;
-}
-
-.main {
-    /* width: 100%; */
-    min-height: 100vh;
-    background-color: #F3DFDF;
-    padding: 80px 0;   
 }
   
 
 img {
     max-width: 100%;
     height: auto; }
+
+
+    /* .filters {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+      }
+    
+      .filter {
+        color: #B19C7D;
+        padding: 5px 15px;
+        border-radius: 100px;
+        border: 2px solid #b6977d;
+        background-color: #FFF0DC;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      
+      .filter.active, .filter:hover {
+        background-color: #FFFBF0;
+      } */
 
 .container {
     width: 60%;
@@ -129,6 +154,8 @@ ul li{
     user-select: none;
     cursor: pointer;
     position: relative;
+    border: 2px none #B19C7D;
+    border-radius: 80px;
 }
 
 ul li::before{
@@ -172,3 +199,47 @@ ul li span:hover{
     background: #edeef0;
 }
 
+.priority-low {
+    border: 2px none #4caf50;
+    border-radius: 80px;
+    background-color: #e6f7e8;
+    margin-bottom: 20px;
+  }
+
+  .priority-medium {
+    border: 2px none #ffc107;
+    border-radius: 80px;
+    background-color: #fffde7;
+    margin-bottom: 20px;
+
+  }
+
+  .priority-high {
+    border: 2px none #f44336;
+    border-radius: 80px;
+    background-color: #ffebee;
+    margin-bottom: 20px;
+  }
+
+
+  #tabs {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+
+#tabs button{
+    color: #B19C7D;
+    padding: 5px 15px;
+    border-radius: 100px;
+    border: 2px solid #b6977d;
+    background-color: #FFF0DC;
+    transition: all 0.2s ease;
+    cursor: pointer;
+      
+}
+
+#tabs button:hover{
+    background-color: #fffbf0;
+}
