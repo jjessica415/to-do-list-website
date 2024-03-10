@@ -23,19 +23,16 @@
                 <h2>To-Do List <img src="images/work-order.png" alt="to-do list icon" id="icon"></h2>
                 <div class="input-container">
                     <form action="" id="todo-form">
-                        <!-- can add onkeyup="checkEnterKey(event)" inside the input text part if you want to be able to just hit 
-                            enter for newTask to be registered without the form tag -->
-                        <input type="text" id="myInput" autocomplete="off" placeholder="Add a task" autofocus required>
-                        <input type="date" id="due-date">
-
+                            <div class="task-input">
+                                <input type="text" id="myInput" autocomplete="off" placeholder="Add a task" autofocus required>
+                                <input type="date" id="due-date">
+                            </div>  
+                        
+                            
                         <button onclick="addTask()">
                             <img src="images/addv1.png" alt="add-sign">
                         </button>
                     </form>
-                    <!-- <div class="filters" id="completed-tasks">
-                        <div class="filter" data-filter="completed">Completed</div>
-                        <ul id="completed-list"></ul>
-                    </div>     -->
                     
                     <div id="tabs">
                         <button class="tab" onclick="showTab('todo')">To-Do</button>
@@ -49,8 +46,6 @@
                       <div id="completed-tasks">
                         <ul id="completed-list"></ul>
                       </div>
-                    <!-- <ul id="list-container">
-                    </ul> -->
 
                 </div>
             </div>
@@ -59,6 +54,5 @@
     <script src="script.js"></script>
     <audio id="audio" src="audio/Mouse Click Sound Effect.mp3"></audio>
 
-    <!-- <audio id="bell" src="https://freesound.org/data/previews/320/320181_274531-lq.mp3"></audio> -->
 </body>
 </html>

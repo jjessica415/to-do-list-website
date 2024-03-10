@@ -8,7 +8,6 @@
   
 
 .main {
-    /* width: 100%; */
     min-height: 100vh;
     background-color: #F3DFDF;
     padding: 80px 0;   
@@ -45,9 +44,10 @@
   align-items: center;
   justify-content: space-between;
   background: #edeef0;
-  border-radius: 30px;
+  border-radius: 100px;
   padding-left: 20px;
   margin-bottom: 25px;
+  overflow: auto;
 }
 
 
@@ -59,30 +59,22 @@
 
 input{
     position: relative;
-    /* justify-content: space-evenly; */
-    /* flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 20px;  */
 }
 
 #myInput{
     flex: 1;
     border: none;
     outline: none;
+    width: 350px;
     background: transparent;
-    /* padding: 2px; */
+    padding-left: 20px;
   }
 
 #due-date{
-    /* font-size: 12px; */
-    /* width: 20px; */
     background: transparent;
-    display: block;
     border: none;
-    outline: none;
-    margin-right: 200px;
+    padding-left: 30px;
+    color: gray;
 }
 
 
@@ -95,10 +87,10 @@ input{
     color: white;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 100px;
   }
 
-button:hover{
+#todo-form button:hover{
   background: #E2A49C;
 }
   
@@ -106,28 +98,6 @@ button:hover{
 img {
     max-width: 100%;
     height: auto; }
-
-
-    /* .filters {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-      }
-    
-      .filter {
-        color: #B19C7D;
-        padding: 5px 15px;
-        border-radius: 100px;
-        border: 2px solid #b6977d;
-        background-color: #FFF0DC;
-        transition: all 0.2s ease;
-        cursor: pointer;
-      }
-      
-      .filter.active, .filter:hover {
-        background-color: #FFFBF0;
-      } */
 
 .container {
     width: 60%;
@@ -150,12 +120,13 @@ img {
 ul li{
     list-style: none;
     font-size: 17px;
-    padding: 12px 80px 12px 50px;
+    padding: 35px 80px 12px 150px;
     user-select: none;
     cursor: pointer;
     position: relative;
     border: 2px none #B19C7D;
     border-radius: 80px;
+    overflow: auto;
 }
 
 ul li::before{
@@ -169,6 +140,8 @@ ul li::before{
     background-position: center;
     top: 9px;
     left: 0px;
+    margin-top: 25px;
+    margin-left: 50px;
 }
 
 ul li.checked{
@@ -192,6 +165,8 @@ ul li span{
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
+    margin-top: 25px;
+    margin-right: 25px;
 }
 
 /* gives user feedback when hovering over the remove (x) symbol */
@@ -230,16 +205,17 @@ ul li span:hover{
   }
 
 #tabs button{
-    color: #B19C7D;
+    color: #b6977d;
     padding: 5px 15px;
     border-radius: 100px;
-    border: 2px solid #b6977d;
-    background-color: #FFF0DC;
+    border: 2px solid #e7d7c9;
+    background-color: #fffbf0;
     transition: all 0.2s ease;
     cursor: pointer;
       
 }
 
 #tabs button:hover{
-    background-color: #fffbf0;
+    background-color: #fff0dc;
+
 }
